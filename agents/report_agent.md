@@ -70,7 +70,7 @@ tbody tr:nth-child(even){background:#f8fafc}
 <body>
 
 <div class="header">
-  <h1>/* INJECT REPORT TITLE */</h1>
+  <h1>/INJECT REPORT TITLE/</h1>
 
 </div>
 
@@ -78,10 +78,10 @@ tbody tr:nth-child(even){background:#f8fafc}
 
   <div class="section-title">Key Metrics</div>
   <div class="stats">
-    <div class="card"><div class="label">/* INJECT LABEL 1 */</div><div class="value" id="s1">—</div></div>
-    <div class="card"><div class="label">/* INJECT LABEL 2 */</div><div class="value" id="s2">—</div></div>
-    <div class="card"><div class="label">/* INJECT LABEL 3 */</div><div class="value" id="s3">—</div></div>
-    <div class="card"><div class="label">/* INJECT LABEL 4 */</div><div class="value" id="s4">—</div></div>
+    <div class="card"><div class="label">/INJECT LABEL 1/</div><div class="value" id="s1">—</div></div>
+    <div class="card"><div class="label">/INJECT LABEL 2/</div><div class="value" id="s2">—</div></div>
+    <div class="card"><div class="label">/INJECT LABEL 3/</div><div class="value" id="s3">—</div></div>
+    <div class="card"><div class="label">/INJECT LABEL 4/</div><div class="value" id="s4">—</div></div>
   </div>
 
   <div class="insight">💡 /* INJECT KEY INSIGHT */</div>
