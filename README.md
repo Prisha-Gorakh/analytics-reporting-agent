@@ -23,7 +23,7 @@ A conversational analytics reporting system built on **ClickHouse** and **LibreC
 | [LibreChat](https://librechat.ai) | Chat interface and agent orchestration |
 | [ClickHouse](https://clickhouse.com) | Analytics database |
 | [ClickHouse MCP](https://github.com/ClickHouse/mcp-clickhouse) | Connects Query Agent to ClickHouse |
-| [html2pdf MCP](https://github.com/your-repo/html2pdf) | Converts HTML template to PDF |
+| [html2pdf MCP](https://github.com/jesamkim/html2pdf) | Converts HTML template to PDF |
 | [nginx](https://nginx.org) | Serves generated PDFs |
 | [Resend](https://resend.com) | Email delivery |
 | [Grafana](https://grafana.com) | Live dashboard embedded in LibreChat |
@@ -136,6 +136,11 @@ analytics-reporting-agent/
 │   └── email_agent.md
 └── architecture.png
 ```
+
+---
+## Acknowledgements
+
+- [html2pdf MCP](https://github.com/jesamkim/html2pdf) by [jesamkim](https://github.com/jesamkim) — HTML to PDF conversion server using Puppeteer. The `html2pdf/` directory is based on this open source project.
 
 ---
 
