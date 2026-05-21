@@ -1,0 +1,48 @@
+services:
+  api:
+    image: librechat-custom
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./librechat.yaml:/app/librechat.yaml
+  mcp-clickhouse:
+    image: mcp/clickhouse
+    container_name: mcp-clickhouse
+    ports:
+      - 8001:8000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - CLICKHOUSE_HOST=host.docker.internal
+      - CLICKHOUSE_PORT=8123
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}
+      - CLICKHOUSE_SECURE=false
+      - CLICKHOUSE_MCP_SERVER_TRANSPORT=sse
+      - CLICKHOUSE_MCP_BIND_HOST=0.0.0.0
+  html2pdf-mcp:
+    image: node:20-slim
+    working_dir: /app
+    volumes:
+      - ./html2pdf:/app
+      - ./pdf-output:/output
+    command: >
+      sh -c "apt-get update && apt-get install -y chromium --no-install-recommends &&
+             npm install -g mcp-proxy &&
+             PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+             mcp-proxy --port 3100 --host 0.0.0.0 -- node dist/index.js"
+    ports:
+      - "3100:3100"
+    environment:
+      - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+      - SSE_KEEP_ALIVE=30000
+    restart: unless-stopped
+  pdf-server:
+    image: nginx:alpine
+    volumes:
+      - ./pdf-output:/usr/share/nginx/html
+    ports:
+      - "8888:80"
+    restart: unless-stopped
